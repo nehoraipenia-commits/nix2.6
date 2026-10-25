@@ -91,9 +91,9 @@ Rétrocompatible avec les scripts graphiques 2D temps réel Nix :
 
 ## 📁 Architecture du projet C++
 
-- [`cpp/include/nix_runtime.hpp`](file:///Users/nehoray/nix2.6/cpp/include/nix_runtime.hpp) : Runtime natif C++ (gestion mémoire, types dynamiques `Value`, modules standards et déclarations GUI).
-- [`cpp/include/nix_qt.hpp`](file:///Users/nehoray/nix2.6/cpp/include/nix_qt.hpp) & [`cpp/src/nix_qt.cpp`](file:///Users/nehoray/nix2.6/cpp/src/nix_qt.cpp) : Implémentation de la librairie graphique Qt6 C++ (`libnix_qt`).
-- [`cpp/src/frontend.hpp`](file:///Users/nehoray/nix2.6/cpp/src/frontend.hpp) : Lexer, AST et Parser C++.
-- [`cpp/src/interpreter.hpp`](file:///Users/nehoray/nix2.6/cpp/src/interpreter.hpp) : Évaluateur tree-walk haute performance.
-- [`cpp/src/compiler.hpp`](file:///Users/nehoray/nix2.6/cpp/src/compiler.hpp) : Compilateur AOT générant du C++ natif lié à `libnix_qt`.
-- [`cpp/src/main.cpp`](file:///Users/nehoray/nix2.6/cpp/src/main.cpp) : CLI `nix` (`run` et `build`).
+- [`cpp/include/nix_runtime.hpp`] : Runtime natif C++ (gestion mémoire, types dynamiques `Value`, modules standards et déclarations GUI).
+- [`cpp/include/nix_qt.hpp`] : Implémentation de la librairie graphique Qt6 C++ (`libnix_qt`).
+- [`cpp/src/frontend.hpp`] : Lexer, AST et Parser C++.
+- [`cpp/src/interpreter.hpp`] : Évaluateur tree-walk haute performance.
+- [`cpp/src/compiler.hpp`] : Compilateur AOT générant du C++ natif lié à `libnix_qt`.
+- [`cpp/src/main.cpp`] : CLI `nix` (`run` et `build`).
