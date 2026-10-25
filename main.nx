@@ -1,0 +1,9 @@
+using <window>
+
+win = window_open("Mon Dessin Nix", 500, 400)
+
+window_clear(win, 25, 25, 35)
+window_draw_rect(win, 50, 50, 150, 100, 255, 100, 120, true)
+window_draw_circle(win, 350, 200, 50, 100, 200, 255, true)
+window_draw_text(win, "Toile 2D Nix C++", 160, 20, 255, 255, 255, 18)
+window_present(win)

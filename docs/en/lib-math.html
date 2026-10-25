@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Library &lt;math&gt; | Nix Documentation</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="../fr/lib-math.html">🇫🇷 Français</a>
+      <a href="lib-math.html" class="active">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Getting Started</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home & Overview</a></li>
+        <li><a href="installation.html">Installation & Build</a></li>
+        <li><a href="syntax.html">Language Syntax</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Standard Libraries</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html" class="active">&lt;math&gt; Mathematics & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Clock & Delays</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Files & OS</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">GUI Framework</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Modern Qt6 Widgets</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; 2D Canvas & Games</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">AOT Compiler & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Math Library &lt;math&gt;</h1>
+    <p>Provides standard arithmetic, trigonometry, and high-precision calculations.</p>
+
+    <pre><code>using &lt;math&gt;</code></pre>
+
+    <h2>Constants</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Constant</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>pi</code></td>
+          <td>Pi constant (3.141592653589793).</td>
+        </tr>
+        <tr>
+          <td><code>e</code></td>
+          <td>Euler's constant (2.718281828459045).</td>
+        </tr>
+        <tr>
+          <td><code>pi_str</code></td>
+          <td>Exact 100-decimal-place Pi string.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Functions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>math_abs(x)</code></td>
+          <td>Absolute value.</td>
+          <td><code>math_abs(-42) -> 42</code></td>
+        </tr>
+        <tr>
+          <td><code>math_sqrt(x)</code></td>
+          <td>Square root (x &gt;= 0).</td>
+          <td><code>math_sqrt(25) -> 5.0</code></td>
+        </tr>
+        <tr>
+          <td><code>math_pow(base, exp)</code></td>
+          <td>Exponentiation x^y.</td>
+          <td><code>math_pow(2, 8) -> 256.0</code></td>
+        </tr>
+        <tr>
+          <td><code>math_ceil(x)</code></td>
+          <td>Rounds up to the nearest integer.</td>
+          <td><code>math_ceil(4.2) -> 5</code></td>
+        </tr>
+        <tr>
+          <td><code>math_floor(x)</code></td>
+          <td>Rounds down to the nearest integer.</td>
+          <td><code>math_floor(4.9) -> 4</code></td>
+        </tr>
+        <tr>
+          <td><code>math_sin(rad)</code></td>
+          <td>Sine in radians.</td>
+          <td><code>math_sin(pi / 2) -> 1.0</code></td>
+        </tr>
+        <tr>
+          <td><code>math_cos(rad)</code></td>
+          <td>Cosine in radians.</td>
+          <td><code>math_cos(0) -> 1.0</code></td>
+        </tr>
+        <tr>
+          <td><code>math_tan(rad)</code></td>
+          <td>Tangent in radians.</td>
+          <td><code>math_tan(0) -> 0.0</code></td>
+        </tr>
+        <tr>
+          <td><code>math_log(x, [base])</code></td>
+          <td>Natural or custom-base logarithm.</td>
+          <td><code>math_log(e) -> 1.0</code></td>
+        </tr>
+        <tr>
+          <td><code>math_factorial(n)</code></td>
+          <td>Factorial of non-negative integer n!.</td>
+          <td><code>math_factorial(5) -> 120</code></td>
+        </tr>
+        <tr>
+          <td><code>hp_mul(a, b)</code></td>
+          <td>High-precision multiplication.</td>
+          <td><code>hp_mul(3.5, 2.0) -> 7.0</code></td>
+        </tr>
+        <tr>
+          <td><code>hp_div(a, b)</code></td>
+          <td>High-precision division.</td>
+          <td><code>hp_div(10, 3) -> 3.3333333333...</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      Nix Language Documentation &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

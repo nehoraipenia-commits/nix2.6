@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2D Canvas & Games &lt;window&gt; | Nix Documentation</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="../fr/lib-window.html">🇫🇷 Français</a>
+      <a href="lib-window.html" class="active">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Getting Started</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home & Overview</a></li>
+        <li><a href="installation.html">Installation & Build</a></li>
+        <li><a href="syntax.html">Language Syntax</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Standard Libraries</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Mathematics & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Clock & Delays</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Files & OS</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">GUI Framework</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Modern Qt6 Widgets</a></li>
+        <li><a href="lib-window.html" class="active">&lt;window&gt; 2D Canvas & Games</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">AOT Compiler & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>2D Canvas Module &lt;window&gt;</h1>
+    <p>The <code>&lt;window&gt;</code> module (also aliased as <code>&lt;mac_window&gt;</code> for backward compatibility) provides a real-time 2D drawing canvas powered by Qt6 hardware double-buffering.</p>
+
+    <pre><code>using &lt;window&gt;</code></pre>
+
+    <h2>Canvas Functions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>window_open(title, w, h)</code></td>
+          <td>Opens a canvas window with width <code>w</code> and height <code>h</code>. Returns the window handle ID.</td>
+        </tr>
+        <tr>
+          <td><code>window_is_open(win)</code></td>
+          <td>Returns <code>true</code> if the window is currently open, <code>false</code> if closed by the user.</td>
+        </tr>
+        <tr>
+          <td><code>window_poll_events(win)</code></td>
+          <td>Dequeues the next pending keyboard or mouse event as a dict: <code>{"type", "key", "x", "y"}</code>.</td>
+        </tr>
+        <tr>
+          <td><code>window_clear(win, r, g, b)</code></td>
+          <td>Clears the canvas background using RGB values (0 to 255).</td>
+        </tr>
+        <tr>
+          <td><code>window_draw_rect(win, x, y, w, h, r, g, b, [filled])</code></td>
+          <td>Draws an outline or filled rectangle.</td>
+        </tr>
+        <tr>
+          <td><code>window_draw_circle(win, cx, cy, radius, r, g, b, [filled])</code></td>
+          <td>Draws an antialiased outline or filled circle.</td>
+        </tr>
+        <tr>
+          <td><code>window_draw_line(win, x1, y1, x2, y2, r, g, b, [thickness])</code></td>
+          <td>Draws a straight line between two points.</td>
+        </tr>
+        <tr>
+          <td><code>window_draw_text(win, text, x, y, r, g, b, [font_size])</code></td>
+          <td>Renders text at (x, y) with a clean system font.</td>
+        </tr>
+        <tr>
+          <td><code>window_present(win)</code></td>
+          <td>Flushes drawing commands and presents the back-buffer to the screen.</td>
+        </tr>
+        <tr>
+          <td><code>window_close(win)</code></td>
+          <td>Programmatically closes the canvas window.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Static Drawing Example (No while loop required)</h2>
+    <p>Nix automatically enters the Qt event loop if an unclosed window exists, keeping your window open without requiring an explicit busy loop:</p>
+    <pre><code>using &lt;window&gt;
+
+win = window_open("Nix 2D Canvas Art", 500, 400)
+
+window_clear(win, 25, 25, 35)
+window_draw_rect(win, 50, 50, 150, 100, 255, 100, 120, true)
+window_draw_circle(win, 350, 200, 50, 100, 200, 255, true)
+window_draw_text(win, "Nix C++ Native Canvas", 150, 25, 255, 255, 255, 18)
+window_present(win)
+
+# The window stays open automatically until you close it!</code></pre>
+
+    <h2>Interactive Game Loop Example</h2>
+    <pre><code>using &lt;window&gt;
+using &lt;time&gt;
+
+win = window_open("Bouncing Ball", 640, 480)
+x = 100
+y = 100
+vx = 5
+vy = 4
+
+while window_is_open(win):
+    ev = window_poll_events(win)
+    if ev != null and ev.get("type") == "quit":
+        break
+    
+    x = x + vx
+    y = y + vy
+    if x <= 20 or x >= 620:
+        vx = -vx
+    if y <= 20 or y >= 460:
+        vy = -vy
+        
+    window_clear(win, 18, 18, 24)
+    window_draw_circle(win, x, y, 20, 0, 230, 180, true)
+    window_present(win)
+    time_sleep(0.016)</code></pre>
+
+    <div class="footer">
+      Nix Programming Language Documentation &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

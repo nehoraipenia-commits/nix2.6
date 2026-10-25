@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AOT Compiler & Benchmark | Nix Documentation</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="../fr/compiler.html">🇫🇷 Français</a>
+      <a href="compiler.html" class="active">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Getting Started</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home & Overview</a></li>
+        <li><a href="installation.html">Installation & Build</a></li>
+        <li><a href="syntax.html">Language Syntax</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Standard Libraries</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Mathematics & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Clock & Delays</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Files & OS</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">GUI Framework</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Modern Qt6 Widgets</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; 2D Canvas & Games</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html" class="active">AOT Compiler & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Nix Ahead-Of-Time (AOT) Compiler</h1>
+    <p>The Nix compiler converts your Nix source code directly into optimized native C++17, and then compiles it to a standalone machine executable with automatic linking to <code>libnix_qt</code>.</p>
+
+    <h2>How to Compile a Program</h2>
+    <pre><code># Standard optimized compilation (-O2)
+./nix build my_program.nx -o my_binary
+
+# Maximum performance optimization (-O3)
+./nix build my_program.nx -o my_binary -O3
+
+# Retain generated intermediate C++ source
+./nix build my_program.nx -o my_binary --emit-cpp</code></pre>
+
+    <h2>Benchmark Comparison</h2>
+    <p>Measured on an intensive recursive workload: computing the 32nd Fibonacci number (<code>fib(32)</code>):</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Execution Engine</th>
+          <th>Execution Time</th>
+          <th>Relative Speedup</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Legacy Python Nix</strong> (<code>python3 nix.py run</code>)</td>
+          <td>12.85 seconds</td>
+          <td>1x (Baseline)</td>
+        </tr>
+        <tr>
+          <td><strong>New Nix C++ Interpreter</strong> (<code>./nix run</code>)</td>
+          <td>0.28 seconds</td>
+          <td><strong>~45x faster</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Nix Native Compiled Binary</strong> (<code>./nix build -O3</code>)</td>
+          <td>0.04 seconds</td>
+          <td><strong>~320x faster</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Why is Compiled Nix so Fast?</h2>
+    <ol>
+      <li><strong>Compact Dynamic Value Model</strong>: Primitive integers and booleans are stored directly in 64 bits without heap allocations.</li>
+      <li><strong>Direct Function Invocations</strong>: Declared Nix functions are translated directly into native C++ functions without string symbol lookup overhead.</li>
+      <li><strong>Low-Level Hardware Optimizations</strong>: The underlying Clang / GCC toolchain applies SIMD vectorization, dead-code elimination, and aggressive register allocation.</li>
+    </ol>
+
+    <h2>Compilation Flags</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Flag</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>-o &lt;path&gt;</code></td>
+          <td>Specify the output binary executable path.</td>
+        </tr>
+        <tr>
+          <td><code>-O0, -O1, -O2, -O3</code></td>
+          <td>Optimization level passed to the underlying C++ compiler (default: <code>-O2</code>).</td>
+        </tr>
+        <tr>
+          <td><code>--emit-cpp</code></td>
+          <td>Keep the emitted C++ source file (saved as <code>&lt;output&gt;.cpp</code>).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      Nix Programming Language Documentation &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

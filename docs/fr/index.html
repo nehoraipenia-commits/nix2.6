@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation Nix | Accueil</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="index.html" class="active">🇫🇷 Français</a>
+      <a href="../en/index.html">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Pour Commencer</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Accueil & Présentation</a></li>
+        <li><a href="installation.html">Installation & Compilation</a></li>
+        <li><a href="syntax.html">Syntaxe du Langage</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Bibliothèques Standards</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Calculs & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Horloge & Délais</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Fichiers & Système</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Interface Graphique</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Widgets Modernes Qt6</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; Canvas 2D & Jeux</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">Compilateur AOT & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div class="hero-banner">
+      <span class="badge badge-cpp">C++17 Engine</span>
+      <span class="badge badge-speed">300x Plus Rapide</span>
+      <h1>Le Langage Nix 2.6</h1>
+      <p>Un langage de programmation élégant, dynamique et moderne, réécrit à 100% en C++ natif avec son propre compilateur AOT et sa bibliothèque graphique Qt6 intégrée.</p>
+    </div>
+
+    <h2>Points Forts de Nix</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <h4>⚡ Performance Native C++</h4>
+        <p>Interpréteur C++ optimisé (~45x plus rapide que Python) et compilateur AOT C++ (~320x plus rapide) produisant des binaires machine autonomes.</p>
+      </div>
+      <div class="card">
+        <h4>🎨 Interface Graphique Qt6</h4>
+        <p>Bibliothèque <code>libnix_qt</code> native en C++ Qt6 pour créer des fenêtres, boutons, inputs, sliders, et toiles de dessin 2D temps réel.</p>
+      </div>
+      <div class="card">
+        <h4>📦 Zéro Dépendance Superflue</h4>
+        <p>Tout le code Python a été éradiqué au profit d'un binaire C++ unique et de headers C++ modulaires.</p>
+      </div>
+      <div class="card">
+        <h4>✨ Syntaxe Intuitive</h4>
+        <p>Un subtil mélange de simplicité et de clarté inspiré du C++ et de Python : <code>fct</code>, <code>class</code>, <code>out()</code>, <code>cin()</code>, <code>for i * 10</code>.</p>
+      </div>
+    </div>
+
+    <h2>Exemple Rapide</h2>
+    <p>Créez un fichier <code>hello.nx</code> :</p>
+    <pre><code># Exemple simple en Nix
+using &lt;math&gt;
+
+fct saluer(nom) {
+    out("Bonjour", nom, "!")
+}
+
+saluer("Nix Developer")
+out("Racine de 144 :", math_sqrt(144))
+
+for i * 3 {
+    out("Boucle numéro :", i)
+}</code></pre>
+
+    <p>Exécutez-le instantanément avec l'interpréteur :</p>
+    <pre><code>./nix run hello.nx</code></pre>
+
+    <p>Ou compilez-le en binaire natif exécutable ultra-rapide :</p>
+    <pre><code>./nix build hello.nx -o hello_bin -O3
+./hello_bin</code></pre>
+
+    <div class="footer">
+      Documentation Nix Language &copy; 2026. Moteur C++ natif avec support Qt6.
+    </div>
+  </main>
+</body>
+</html>

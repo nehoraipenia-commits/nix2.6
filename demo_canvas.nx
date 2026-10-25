@@ -1,0 +1,13 @@
+# Démo 2D Canvas avec le moteur Qt6 C++ (reste ouverte automatiquement sans boucle while)
+using <window>
+
+win = window_open("Nix Qt6 2D Canvas Engine", 600, 400)
+
+window_clear(win, 20, 20, 35)
+window_draw_rect(win, 60, 60, 180, 110, 255, 90, 120, true)
+window_draw_circle(win, 360, 200, 65, 90, 200, 250, true)
+window_draw_line(win, 40, 340, 560, 340, 120, 255, 140, 3)
+window_draw_text(win, "Nix Qt6 Canvas - Fermez la fenetre pour quitter", 60, 20, 255, 255, 255, 16)
+window_present(win)
+
+out("Fenêtre Canvas affichée ! Elle restera ouverte jusqu'à ce que vous la fermiez.")

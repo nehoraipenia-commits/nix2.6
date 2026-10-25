@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Installation & Compilation | Documentation Nix</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="installation.html" class="active">🇫🇷 Français</a>
+      <a href="../en/installation.html">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Pour Commencer</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil & Présentation</a></li>
+        <li><a href="installation.html" class="active">Installation & Compilation</a></li>
+        <li><a href="syntax.html">Syntaxe du Langage</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Bibliothèques Standards</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Calculs & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Horloge & Délais</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Fichiers & Système</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Interface Graphique</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Widgets Modernes Qt6</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; Canvas 2D & Jeux</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">Compilateur AOT & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Installation & Compilation de Nix</h1>
+    <p>Le projet Nix est développé en C++17 avec la bibliothèque Qt6. Il ne nécessite plus aucun interpréteur Python.</p>
+
+    <h2>Prérequis Système</h2>
+    <ul>
+      <li><strong>Compilateur C++</strong> : Clang (macOS) ou GCC (Linux) supportant la norme <code>C++17</code>.</li>
+      <li><strong>Qt6</strong> : Framework QtWidgets, QtGui, QtCore (installable via <code>brew install qt</code> sous macOS ou <code>apt install qt6-base-dev</code> sous Linux).</li>
+      <li><strong>Make</strong> : Pour orchestrer la compilation.</li>
+    </ul>
+
+    <h2>Compiler le Moteur Nix</h2>
+    <p>Rendez-vous à la racine du projet et lancez simplement :</p>
+    <pre><code>make</code></pre>
+
+    <p>Cette commande effectue automatiquement :</p>
+    <ol>
+      <li>La compilation de la bibliothèque graphique Qt6 C++ : <code>lib/libnix_qt.a</code> et <code>lib/libnix_qt.dylib</code>.</li>
+      <li>La compilation du binaire CLI principal <code>./nix</code> avec toutes les optimisations <code>-O3</code>.</li>
+    </ol>
+
+    <h2>Nettoyer les fichiers de build</h2>
+    <pre><code>make clean</code></pre>
+
+    <h2>Commandes CLI du binaire Nix</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Commande</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>./nix run script.nx [args...]</code></td>
+          <td>Exécute le script Nix avec l'interpréteur C++ optimisé.</td>
+        </tr>
+        <tr>
+          <td><code>./nix build script.nx -o binaire</code></td>
+          <td>Compile le script en binaire natif autonome avec optimisations.</td>
+        </tr>
+        <tr>
+          <td><code>./nix build script.nx -O3</code></td>
+          <td>Compile avec le niveau maximal d'optimisation machine (-O3).</td>
+        </tr>
+        <tr>
+          <td><code>./nix build script.nx --emit-cpp</code></td>
+          <td>Génère et conserve le code source C++ intermédiaire.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      Documentation Nix Language &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

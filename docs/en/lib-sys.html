@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System & Files &lt;sys&gt; | Nix Documentation</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="../fr/lib-sys.html">🇫🇷 Français</a>
+      <a href="lib-sys.html" class="active">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Getting Started</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home & Overview</a></li>
+        <li><a href="installation.html">Installation & Build</a></li>
+        <li><a href="syntax.html">Language Syntax</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Standard Libraries</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Mathematics & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Clock & Delays</a></li>
+        <li><a href="lib-sys.html" class="active">&lt;sys&gt; Files & OS</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">GUI Framework</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Modern Qt6 Widgets</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; 2D Canvas & Games</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">AOT Compiler & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>System & Files &lt;sys&gt;</h1>
+    <p>Provides filesystem manipulation, operating system inspection, and shell process execution.</p>
+
+    <pre><code>using &lt;sys&gt;</code></pre>
+
+    <h2>File Operations</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>file_write(path, content)</code></td>
+          <td>Writes string content to a file (overwrites if existing). Returns <code>true</code>.</td>
+        </tr>
+        <tr>
+          <td><code>file_read(path)</code></td>
+          <td>Reads and returns entire file content as a string.</td>
+        </tr>
+        <tr>
+          <td><code>file_exists(path)</code></td>
+          <td>Checks if a file or directory exists. Returns a boolean.</td>
+        </tr>
+        <tr>
+          <td><code>file_delete(path)</code></td>
+          <td>Deletes a file from the disk.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>OS & Process Operations</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>sys_args()</code></td>
+          <td>Returns the list of command-line arguments passed to the script.</td>
+        </tr>
+        <tr>
+          <td><code>sys_execute(command)</code></td>
+          <td>Runs a shell command and returns a dictionary with <code>stdout</code>, <code>stderr</code>, and <code>code</code>.</td>
+        </tr>
+        <tr>
+          <td><code>os_name()</code></td>
+          <td>Returns operating system family (e.g. <code>"posix"</code> or <code>"nt"</code>).</td>
+        </tr>
+        <tr>
+          <td><code>os_listdir([path])</code></td>
+          <td>Returns a list of filenames in the specified directory path (defaults to <code>"."</code>).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Example</h2>
+    <pre><code>using &lt;sys&gt;
+
+file_write("sample.txt", "Testing Nix Native C++ filesystem")
+
+if file_exists("sample.txt") {
+    data = file_read("sample.txt")
+    out("Read data:", data)
+    file_delete("sample.txt")
+}
+
+cmd = sys_execute("uname -m")
+out("Machine architecture:", cmd["stdout"].strip())</code></pre>
+
+    <div class="footer">
+      Nix Language Documentation &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

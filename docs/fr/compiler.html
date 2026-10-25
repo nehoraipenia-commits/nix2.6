@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compilateur AOT & Benchmark | Documentation Nix</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="compiler.html" class="active">🇫🇷 Français</a>
+      <a href="../en/compiler.html">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Pour Commencer</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil & Présentation</a></li>
+        <li><a href="installation.html">Installation & Compilation</a></li>
+        <li><a href="syntax.html">Syntaxe du Langage</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Bibliothèques Standards</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Calculs & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Horloge & Délais</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Fichiers & Système</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Interface Graphique</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Widgets Modernes Qt6</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; Canvas 2D & Jeux</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html" class="active">Compilateur AOT & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Le Compilateur AOT de Nix</h1>
+    <p>Le compilateur de Nix (Ahead-Of-Time) traduit votre code Nix directement en C++17 natif optimisé, puis invoque le compilateur machine (Clang ou GCC) avec liaison automatique à la bibliothèque <code>libnix_qt</code>.</p>
+
+    <h2>Comment Compiler un Programme</h2>
+    <pre><code># Compilation standard optimisée (-O2)
+./nix build mon_programme.nx -o mon_binaire
+
+# Compilation maximale (-O3)
+./nix build mon_programme.nx -o mon_binaire -O3
+
+# Conserver le code C++ généré intermédiare
+./nix build mon_programme.nx -o mon_binaire --emit-cpp</code></pre>
+
+    <h2>Résultats du Benchmark Comparatif</h2>
+    <p>Test effectué sur un algorithme récursif lourd : calcul du 32ème terme de la suite de Fibonacci (<code>fib(32)</code>) :</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Moteur d'Exécution</th>
+          <th>Temps d'Exécution</th>
+          <th>Accélération Relative</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Ancien Nix Python</strong> (<code>python3 nix.py run</code>)</td>
+          <td>12.85 secondes</td>
+          <td>1x (Référence)</td>
+        </tr>
+        <tr>
+          <td><strong>Nouvel Interpréteur C++ Nix</strong> (<code>./nix run</code>)</td>
+          <td>0.28 seconde</td>
+          <td><strong>~45x plus rapide</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Binaire Compilé Natif Nix C++</strong> (<code>./nix build -O3</code>)</td>
+          <td>0.04 seconde</td>
+          <td><strong>~320x plus rapide</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Pourquoi le Code Compilé est-il si Rapide ?</h2>
+    <ol>
+      <li><strong>Représentation dynamique Value compacte</strong> : Les entiers et booléens tiennent directement sur 64 bits sans allocation sur le tas (heap).</li>
+      <li><strong>Dispatch direct des appels</strong> : Les fonctions Nix déclarées sont compilées en fonctions C++ directes sans recherche par chaîne de caractères.</li>
+      <li><strong>Optimisations machine avancées</strong> : Le compilateur C++ sous-jacent applique l'inlining agressif, l'élimination des sous-expressions communes et la vectorisation.</li>
+    </ol>
+
+    <div class="footer">
+      Documentation Nix Language &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language Syntax | Nix Documentation</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="../fr/syntax.html">🇫🇷 Français</a>
+      <a href="syntax.html" class="active">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Getting Started</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home & Overview</a></li>
+        <li><a href="installation.html">Installation & Build</a></li>
+        <li><a href="syntax.html" class="active">Language Syntax</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Standard Libraries</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Mathematics & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Clock & Delays</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Files & OS</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">GUI Framework</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Modern Qt6 Widgets</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; 2D Canvas & Games</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">AOT Compiler & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Complete Nix Syntax Reference</h1>
+    <p>Nix features clean curly-brace blocks <code>{ ... }</code> combined with lightweight dynamic typing.</p>
+
+    <h2>1. Variables & Data Types</h2>
+    <pre><code># Integers & Floating-point numbers
+age = 25
+rate = 3.14159
+
+# Booleans (lowercase: true / false)
+active = true
+blocked = false
+
+# Strings
+message = "Hello World"
+
+# Vectors (lists)
+numbers = [10, 20, 30]
+numbers.append(40)
+first = numbers[0]
+
+# Dictionaries (key-value maps)
+user = {
+    "name": "Alice",
+    "score": 100
+}
+user["score"] = 150</code></pre>
+
+    <h2>2. Input & Output: out() and cin()</h2>
+    <pre><code># Print to console with out(...)
+out("Welcome to", "Nix", 2026)
+
+# Read from console with cin(...)
+name = cin("Enter your name: ")
+out("Nice to meet you", name)</code></pre>
+
+    <h2>3. Conditionals: if / else</h2>
+    <pre><code>score = 85
+
+if score >= 90 {
+    out("Excellent!")
+} else if score >= 70 {
+    out("Well done!")
+} else {
+    out("Keep practicing.")
+}</code></pre>
+
+    <h2>4. Loops: while and for</h2>
+    <p>Nix features a custom concise <code>for</code> loop syntax with the <code>*</code> operator to iterate from <code>0</code> to <code>N-1</code>:</p>
+    <pre><code># Custom for loop: 'for variable * limit'
+for i * 5 {
+    out("Loop index:", i)
+}
+
+# Standard while loop
+counter = 0
+while counter < 3 {
+    out("Count:", counter)
+    counter = counter + 1
+}</code></pre>
+
+    <h2>5. Functions: fct</h2>
+    <p>Functions are declared with <code>fct</code>:</p>
+    <pre><code>fct add(a, b) {
+    return a + b
+}
+
+result = add(12, 30)
+out("Result:", result) # 42</code></pre>
+
+    <h2>6. Classes & Objects: class</h2>
+    <p>Nix supports object orientation with methods and fields:</p>
+    <pre><code>class Player {
+    name = "Hero"
+    hp = 100
+
+    fct take_damage(amount) {
+        hp = hp - amount
+        out(name, "now has", hp, "HP")
+    }
+}
+
+p = Player()
+out("Player name:", p.name)
+p.take_damage(20)</code></pre>
+
+    <h2>7. Importing Libraries: using &lt;...&gt;</h2>
+    <pre><code>using &lt;math&gt;
+using &lt;time&gt;
+using &lt;qt&gt;</code></pre>
+
+    <div class="footer">
+      Nix Language Documentation &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nix Programming Language Documentation</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .portal-container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      width: 72px;
+      height: 72px;
+      line-height: 72px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: #fff;
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.35);
+    }
+    .lang-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+      text-align: left;
+    }
+    .portal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .portal-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+    .portal-card h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+    .portal-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .btn-enter {
+      display: inline-block;
+      text-align: center;
+      background: var(--accent);
+      color: #0f172a;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .btn-enter:hover {
+      background: var(--accent-hover);
+    }
+    .feature-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+    .pill {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body style="display: block; background: radial-gradient(circle at top, #1e293b, var(--bg-main));">
+  <div class="portal-container">
+    <div class="hero-badge">NX</div>
+    <h1 style="font-size: 2.6rem; margin-bottom: 10px; color: #fff;">Nix Programming Language</h1>
+    <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 650px; margin: 0 auto;">
+      High-performance C++17 native language with AOT compilation, rich Qt6 GUI framework, and 2D canvas engine.
+    </p>
+
+    <div class="feature-pills">
+      <span class="pill">⚡ C++17 Core</span>
+      <span class="pill">🚀 AOT Machine Compiler</span>
+      <span class="pill">🎨 Qt6 Modern GUI</span>
+      <span class="pill">🎮 2D Canvas Engine</span>
+      <span class="pill">🏎️ 45x - 320x Faster</span>
+    </div>
+
+    <div class="lang-cards">
+      <div class="portal-card">
+        <div>
+          <h2>🇫🇷 Documentation Française</h2>
+          <p>
+            Explorez la documentation complète en français : guide de démarrage, syntaxe, bibliothèques <code>&lt;math&gt;</code>, <code>&lt;time&gt;</code>, <code>&lt;sys&gt;</code>, création d'interfaces Qt6 et compilateur AOT.
+          </p>
+        </div>
+        <a href="fr/index.html" class="btn-enter">Accéder à la Doc (FR) &rarr;</a>
+      </div>
+
+      <div class="portal-card">
+        <div>
+          <h2>🇬🇧 English Documentation</h2>
+          <p>
+            Browse the complete documentation in English: quickstart tutorial, syntax reference, standard modules <code>&lt;math&gt;</code>, <code>&lt;time&gt;</code>, <code>&lt;sys&gt;</code>, Qt6 GUI designer, and AOT compiler.
+          </p>
+        </div>
+        <a href="en/index.html" class="btn-enter">Open Documentation (EN) &rarr;</a>
+      </div>
+    </div>
+
+    <div style="margin-top: 60px; color: var(--text-muted); font-size: 0.85rem;">
+      Nix Language v2.6 &copy; 2026. Fully ported to C++17 and Qt6.
+    </div>
+  </div>
+</body>
+</html>

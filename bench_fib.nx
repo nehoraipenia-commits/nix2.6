@@ -1,0 +1,10 @@
+fct fib(n) {
+    if n <= 1 {
+        return n
+    }
+    return fib(n - 1) + fib(n - 2)
+}
+
+out("Computing fib(32)...")
+res = fib(32)
+out("Result:", res)

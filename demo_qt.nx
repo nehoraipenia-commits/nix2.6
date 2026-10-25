@@ -1,0 +1,35 @@
+# Exemple d'application graphique Nix avec la librairie native Qt6 C++
+using <qt>
+
+win = qt_window("Nix Qt6 Studio", 450, 380)
+qt_set_style(win, "QWidget { background-color: #1e1e2e; color: #cdd6f4; font-family: Helvetica; font-size: 14px; } QPushButton { background-color: #89b4fa; color: #11111b; border-radius: 6px; padding: 8px; font-weight: bold; } QLineEdit { background-color: #313244; border: 1px solid #45475a; border-radius: 4px; padding: 6px; color: white; }")
+
+header = qt_label(win, "✨ Bienvenue dans Nix Qt6 C++ GUI ✨")
+qt_set_style(header, "font-size: 18px; font-weight: bold; color: #89b4fa; margin-bottom: 8px;")
+
+inp = qt_input(win, "Entrez votre nom...")
+chk = qt_checkbox(win, "Activer le mode Turbo C++", true)
+sld = qt_slider(win, 0, 100, 75)
+bar = qt_progressbar(win, 0, 100, 75)
+
+status_lbl = qt_label(win, "Prêt.")
+
+fct on_slider_move() {
+    val = qt_get_value(sld)
+    qt_set_value(bar, val)
+    qt_set_text(status_lbl, "Puissance : " + val + "%")
+}
+
+fct on_btn_click() {
+    nom = qt_get_text(inp)
+    if nom == "" {
+        nom = "Développeur Nix"
+    }
+    qt_set_text(status_lbl, "Bonjour " + nom + " ! (Turbo = " + qt_is_checked(chk) + ")")
+}
+
+qt_on_change(sld, on_slider_move)
+btn = qt_button(win, "Valider", on_btn_click)
+
+out("Widget window handle:", win)
+out("Initial progress value:", qt_get_value(bar))

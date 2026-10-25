@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syntaxe du Langage | Documentation Nix</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="syntax.html" class="active">🇫🇷 Français</a>
+      <a href="../en/syntax.html">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Pour Commencer</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil & Présentation</a></li>
+        <li><a href="installation.html">Installation & Compilation</a></li>
+        <li><a href="syntax.html" class="active">Syntaxe du Langage</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Bibliothèques Standards</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Calculs & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Horloge & Délais</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Fichiers & Système</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Interface Graphique</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Widgets Modernes Qt6</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; Canvas 2D & Jeux</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">Compilateur AOT & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Syntaxe Complète du Langage Nix</h1>
+    <p>La syntaxe de Nix combine la lisibilité des langages dynamiques avec la rigueur des structures par accolades <code>{ ... }</code>.</p>
+
+    <h2>1. Variables & Types de Données</h2>
+    <p>Le typage est dynamique avec inférence automatique :</p>
+    <pre><code># Nombres entiers et décimaux
+age = 25
+taux = 3.14159
+
+# Booléens (en minuscules : true / false)
+actif = true
+bloque = false
+
+# Chaînes de caractères
+message = "Bonjour le monde"
+
+# Vecteurs (tableaux ordonnés)
+nombres = [10, 20, 30]
+nombres.append(40)
+premier = nombres[0]
+
+# Dictionnaires (clé -> valeur)
+utilisateur = {
+    "nom": "Alice",
+    "score": 100
+}
+utilisateur["score"] = 150</code></pre>
+
+    <h2>2. Entrées & Sorties : out() et cin()</h2>
+    <pre><code># Affichage avec out(...)
+out("Bonjour", "Nix", 2026)
+
+# Lecture console avec cin(...)
+nom = cin("Quel est votre nom ? ")
+out("Enchanté", nom)</code></pre>
+
+    <h2>3. Conditions : if / else</h2>
+    <pre><code>score = 85
+
+if score >= 90 {
+    out("Excellent !")
+} else if score >= 70 {
+    out("Bien joué !")
+} else {
+    out("Courage pour la suite.")
+}</code></pre>
+
+    <h2>4. Boucles : while et for</h2>
+    <p>Nix propose une syntaxe de boucle <code>for</code> expressive avec l'opérateur <code>*</code> pour itérer de <code>0</code> à <code>N-1</code> :</p>
+    <pre><code># Boucle for : 'for variable * limite'
+for i * 5 {
+    out("Itération :", i)
+}
+
+# Boucle while classique
+compteur = 0
+while compteur < 3 {
+    out("Compte :", compteur)
+    compteur = compteur + 1
+}</code></pre>
+
+    <h2>5. Fonctions : fct</h2>
+    <p>Les fonctions sont déclarées avec le mot-clé <code>fct</code> :</p>
+    <pre><code>fct additionner(a, b) {
+    return a + b
+}
+
+resultat = additionner(12, 30)
+out("Résultat :", resultat) # 42</code></pre>
+
+    <h2>6. Classes & Objets : class</h2>
+    <p>Nix supporte l'orientation objet avec des méthodes et propriétés internes :</p>
+    <pre><code>class Guerrier {
+    nom = "Arthur"
+    points_de_vie = 100
+
+    fct attaquer(degats) {
+        points_de_vie = points_de_vie - degats
+        out(nom, "a maintenant", points_de_vie, "PV")
+    }
+}
+
+g = Guerrier()
+out("Nom du guerrier :", g.nom)
+g.attaquer(25)</code></pre>
+
+    <h2>7. Importation de Modules : using &lt;...&gt;</h2>
+    <pre><code>using &lt;math&gt;
+using &lt;time&gt;
+using &lt;qt&gt;</code></pre>
+
+    <div class="footer">
+      Documentation Nix Language &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

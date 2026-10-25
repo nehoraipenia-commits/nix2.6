@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nix Documentation | Home</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="../fr/index.html">🇫🇷 Français</a>
+      <a href="index.html" class="active">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Getting Started</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home & Overview</a></li>
+        <li><a href="installation.html">Installation & Build</a></li>
+        <li><a href="syntax.html">Language Syntax</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Standard Libraries</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Mathematics & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Clock & Delays</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Files & OS</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">GUI Framework</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Modern Qt6 Widgets</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; 2D Canvas & Games</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">AOT Compiler & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div class="hero-banner">
+      <span class="badge badge-cpp">C++17 Engine</span>
+      <span class="badge badge-speed">300x Faster</span>
+      <h1>Nix Programming Language 2.6</h1>
+      <p>An elegant, high-performance programming language completely rewritten in native C++ with an AOT compiler and an integrated Qt6 GUI engine.</p>
+    </div>
+
+    <h2>Key Highlights</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <h4>⚡ Native C++ Speed</h4>
+        <p>Optimized C++ tree-walk interpreter (~45x faster than Python) and AOT native compiler (~320x faster) producing standalone machine binaries.</p>
+      </div>
+      <div class="card">
+        <h4>🎨 Integrated Qt6 GUI Library</h4>
+        <p>Built-in <code>libnix_qt</code> library for creating desktop applications with buttons, textboxes, progress bars, and real-time 2D canvas.</p>
+      </div>
+      <div class="card">
+        <h4>📦 100% Native Codebase</h4>
+        <p>Legacy Python files have been entirely replaced by a clean, self-contained C++ architecture.</p>
+      </div>
+      <div class="card">
+        <h4>✨ Intuitive & Expressive Syntax</h4>
+        <p>Combines ease of use and structure: <code>fct</code>, <code>class</code>, <code>out()</code>, <code>cin()</code>, <code>for i * 10</code>.</p>
+      </div>
+    </div>
+
+    <h2>Quick Start</h2>
+    <p>Create a file named <code>hello.nx</code> :</p>
+    <pre><code># Simple Nix program
+using &lt;math&gt;
+
+fct greet(name) {
+    out("Hello", name, "!")
+}
+
+greet("Nix Developer")
+out("Square root of 144:", math_sqrt(144))
+
+for i * 3 {
+    out("Iteration:", i)
+}</code></pre>
+
+    <p>Run it immediately with the C++ interpreter:</p>
+    <pre><code>./nix run hello.nx</code></pre>
+
+    <p>Or compile it into a lightning-fast native binary:</p>
+    <pre><code>./nix build hello.nx -o hello_bin -O3
+./hello_bin</code></pre>
+
+    <div class="footer">
+      Nix Language Documentation &copy; 2026. Native C++ engine with Qt6 support.
+    </div>
+  </main>
+</body>
+</html>

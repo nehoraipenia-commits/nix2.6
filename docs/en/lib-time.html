@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Library &lt;time&gt; | Nix Documentation</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="../fr/lib-time.html">🇫🇷 Français</a>
+      <a href="lib-time.html" class="active">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Getting Started</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home & Overview</a></li>
+        <li><a href="installation.html">Installation & Build</a></li>
+        <li><a href="syntax.html">Language Syntax</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Standard Libraries</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Mathematics & Pi</a></li>
+        <li><a href="lib-time.html" class="active">&lt;time&gt; Clock & Delays</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Files & OS</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">GUI Framework</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Modern Qt6 Widgets</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; 2D Canvas & Games</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">AOT Compiler & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Time Library &lt;time&gt;</h1>
+    <p>Provides benchmark timers, execution sleep pauses, and date formatting.</p>
+
+    <pre><code>using &lt;time&gt;</code></pre>
+
+    <h2>Functions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>time_now()</code></td>
+          <td>Returns current high-resolution system timestamp (Unix epoch in seconds).</td>
+        </tr>
+        <tr>
+          <td><code>time_sleep(seconds)</code></td>
+          <td>Suspends execution for <code>seconds</code> (accepts floating-point values like <code>0.25</code>).</td>
+        </tr>
+        <tr>
+          <td><code>time_format([timestamp], [format])</code></td>
+          <td>Formats a timestamp into a readable date string (defaults to <code>"%Y-%m-%d %H:%M:%S"</code>).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Benchmarking Example</h2>
+    <pre><code>using &lt;time&gt;
+
+start = time_now()
+
+# Task simulation
+time_sleep(0.15)
+
+elapsed = time_now() - start
+out("Elapsed time:", elapsed, "seconds")
+out("Current date:", time_format())</code></pre>
+
+    <div class="footer">
+      Nix Language Documentation &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

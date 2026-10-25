@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Système & Fichiers &lt;sys&gt; | Documentation Nix</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="lib-sys.html" class="active">🇫🇷 Français</a>
+      <a href="../en/lib-sys.html">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Pour Commencer</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil & Présentation</a></li>
+        <li><a href="installation.html">Installation & Compilation</a></li>
+        <li><a href="syntax.html">Syntaxe du Langage</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Bibliothèques Standards</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Calculs & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Horloge & Délais</a></li>
+        <li><a href="lib-sys.html" class="active">&lt;sys&gt; Fichiers & Système</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Interface Graphique</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Widgets Modernes Qt6</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; Canvas 2D & Jeux</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">Compilateur AOT & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Module &lt;sys&gt;</h1>
+    <p>Permet d'interagir avec le système de fichiers, l'environnement d'exploitation et les arguments en ligne de commande.</p>
+
+    <pre><code>using &lt;sys&gt;</code></pre>
+
+    <h2>Fonctions Fichiers & Disque</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Fonction</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>file_write(path, contenu)</code></td>
+          <td>Écrit une chaîne de caractères dans un fichier (écrase si existant). Retourne <code>true</code>.</td>
+        </tr>
+        <tr>
+          <td><code>file_read(path)</code></td>
+          <td>Lit et retourne l'intégralité du contenu d'un fichier texte sous forme de chaîne.</td>
+        </tr>
+        <tr>
+          <td><code>file_exists(path)</code></td>
+          <td>Vérifie si un fichier ou un dossier existe. Retourne un booléen.</td>
+        </tr>
+        <tr>
+          <td><code>file_delete(path)</code></td>
+          <td>Supprime un fichier sur le disque.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Fonctions Système & Processus</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Fonction</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>sys_args()</code></td>
+          <td>Retourne la liste des arguments passés en ligne de commande au programme.</td>
+        </tr>
+        <tr>
+          <td><code>sys_execute(commande)</code></td>
+          <td>Exécute une commande shell système et retourne un dictionnaire contenant <code>stdout</code>, <code>stderr</code> et <code>code</code>.</td>
+        </tr>
+        <tr>
+          <td><code>os_name()</code></td>
+          <td>Retourne le nom du système d'exploitation hôte (ex: <code>"posix"</code> ou <code>"nt"</code>).</td>
+        </tr>
+        <tr>
+          <td><code>os_listdir([path])</code></td>
+          <td>Retourne la liste des noms de fichiers et répertoires présents dans le chemin spécifié (par défaut <code>"."</code>).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Exemple</h2>
+    <pre><code>using &lt;sys&gt;
+
+# Écriture puis lecture
+file_write("demo.txt", "Contenu de test Nix C++")
+
+if file_exists("demo.txt") {
+    texte = file_read("demo.txt")
+    out("Lu :", texte)
+    file_delete("demo.txt")
+}
+
+# Commande système
+res = sys_execute("echo 'Hello Terminal'")
+out("Sortie shell :", res["stdout"])</code></pre>
+
+    <div class="footer">
+      Documentation Nix Language &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

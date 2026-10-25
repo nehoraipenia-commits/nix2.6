@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qt6 GUI Framework &lt;qt&gt; | Nix Documentation</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="../fr/lib-qt.html">🇫🇷 Français</a>
+      <a href="lib-qt.html" class="active">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Getting Started</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home & Overview</a></li>
+        <li><a href="installation.html">Installation & Build</a></li>
+        <li><a href="syntax.html">Language Syntax</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Standard Libraries</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Mathematics & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Clock & Delays</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Files & OS</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">GUI Framework</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html" class="active">&lt;qt&gt; Modern Qt6 Widgets</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; 2D Canvas & Games</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">AOT Compiler & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Qt6 GUI Framework &lt;qt&gt; (libnix_qt)</h1>
+    <p>The native <code>libnix_qt</code> C++ library connects Nix directly with <strong>Qt6</strong>, allowing you to build reactive, modern desktop applications with full styling and callbacks.</p>
+
+    <pre><code>using &lt;qt&gt;</code></pre>
+
+    <h2>Automatic Event Loop</h2>
+    <p>Creating a window with <code>qt_window</code> displays it immediately. When your script finishes its top-level statements, <strong>the native Qt6 event loop starts automatically</strong>, keeping your window open and interactive without needing a <code>while true</code> loop!</p>
+
+    <h2>Widget Creation</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>qt_window(title, width, height)</code></td>
+          <td>Creates and displays a main Qt6 window.</td>
+        </tr>
+        <tr>
+          <td><code>qt_label(parent, text)</code></td>
+          <td>Creates a text label (QLabel).</td>
+        </tr>
+        <tr>
+          <td><code>qt_button(parent, text, [callback])</code></td>
+          <td>Creates a push button (QPushButton) with optional click handler.</td>
+        </tr>
+        <tr>
+          <td><code>qt_input(parent, [placeholder])</code></td>
+          <td>Creates a single-line input field (QLineEdit).</td>
+        </tr>
+        <tr>
+          <td><code>qt_textarea(parent, [text])</code></td>
+          <td>Creates a multi-line text editor (QTextEdit).</td>
+        </tr>
+        <tr>
+          <td><code>qt_checkbox(parent, text, [checked])</code></td>
+          <td>Creates a toggleable checkbox (QCheckBox).</td>
+        </tr>
+        <tr>
+          <td><code>qt_slider(parent, min, max, value)</code></td>
+          <td>Creates a horizontal slider (QSlider).</td>
+        </tr>
+        <tr>
+          <td><code>qt_progressbar(parent, min, max, val)</code></td>
+          <td>Creates a progress bar (QProgressBar).</td>
+        </tr>
+        <tr>
+          <td><code>qt_combobox(parent, [items])</code></td>
+          <td>Creates a drop-down selection box (QComboBox).</td>
+        </tr>
+        <tr>
+          <td><code>qt_listwidget(parent, [items])</code></td>
+          <td>Creates a list view (QListWidget).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Containers & Layouts</h2>
+    <ul>
+      <li><code>qt_vbox(parent)</code>: Vertical layout container.</li>
+      <li><code>qt_hbox(parent)</code>: Horizontal layout container.</li>
+      <li><code>qt_frame(parent)</code>: Decorative styled panel frame.</li>
+      <li><code>qt_groupbox(parent, title)</code>: Titled group box container.</li>
+    </ul>
+
+    <h2>Events & Properties</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>qt_set_text(widget, text)</code> / <code>qt_get_text(widget)</code></td>
+          <td>Sets or reads text content from a widget.</td>
+        </tr>
+        <tr>
+          <td><code>qt_set_value(widget, val)</code> / <code>qt_get_value(widget)</code></td>
+          <td>Sets or reads numerical value (slider, progress bar).</td>
+        </tr>
+        <tr>
+          <td><code>qt_is_checked(cb)</code> / <code>qt_set_checked(cb, bool)</code></td>
+          <td>Checks or sets checkbox state.</td>
+        </tr>
+        <tr>
+          <td><code>qt_set_style(widget, qss)</code></td>
+          <td>Applies QSS / CSS styling rules.</td>
+        </tr>
+        <tr>
+          <td><code>qt_on_click(btn, callback_fct)</code></td>
+          <td>Attaches a Nix function to a button click event.</td>
+        </tr>
+        <tr>
+          <td><code>qt_on_change(widget, callback_fct)</code></td>
+          <td>Fires when widget value or text changes.</td>
+        </tr>
+        <tr>
+          <td><code>qt_timer(ms, callback_fct, [repeat])</code></td>
+          <td>Calls a function every X milliseconds.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Native Dialogs</h2>
+    <ul>
+      <li><code>qt_msgbox(title, message)</code>: Native information popup.</li>
+      <li><code>qt_confirm(title, question)</code>: Confirmation dialog (returns boolean).</li>
+      <li><code>qt_file_dialog([title], [filter])</code>: File picker dialog.</li>
+      <li><code>qt_color_dialog([title])</code>: Graphical color picker.</li>
+    </ul>
+
+    <h2>Complete Application Example</h2>
+    <pre><code>using &lt;qt&gt;
+
+win = qt_window("Nix Qt6 App", 400, 300)
+qt_set_style(win, "QWidget { background: #181825; color: white; font-size: 14px; } QPushButton { background: #89b4fa; color: #111; padding: 8px; border-radius: 4px; font-weight: bold; }")
+
+lbl = qt_label(win, "Enter your name below:")
+inp = qt_input(win, "Your name...")
+
+fct on_click() {
+    name = qt_get_text(inp)
+    qt_set_text(lbl, "Welcome " + name + "!")
+}
+
+btn = qt_button(win, "Submit", on_click)</code></pre>
+
+    <div class="footer">
+      Nix Language Documentation &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

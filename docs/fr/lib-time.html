@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bibliothèque Temporelle &lt;time&gt; | Documentation Nix</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="lib-time.html" class="active">🇫🇷 Français</a>
+      <a href="../en/lib-time.html">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Pour Commencer</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil & Présentation</a></li>
+        <li><a href="installation.html">Installation & Compilation</a></li>
+        <li><a href="syntax.html">Syntaxe du Langage</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Bibliothèques Standards</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Calculs & Pi</a></li>
+        <li><a href="lib-time.html" class="active">&lt;time&gt; Horloge & Délais</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Fichiers & Système</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Interface Graphique</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Widgets Modernes Qt6</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; Canvas 2D & Jeux</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">Compilateur AOT & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Module &lt;time&gt;</h1>
+    <p>Permet de mesurer des performances, d'ajouter des temporisations ou de formater l'heure locale.</p>
+
+    <pre><code>using &lt;time&gt;</code></pre>
+
+    <h2>Fonctions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Fonction</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>time_now()</code></td>
+          <td>Retourne l'horodatage système actuel (Epoch time en secondes sous forme de float haute précision).</td>
+        </tr>
+        <tr>
+          <td><code>time_sleep(secondes)</code></td>
+          <td>Met en pause l'exécution du programme pendant <code>secondes</code> (accepte les valeurs décimales, ex: <code>0.5</code>).</td>
+        </tr>
+        <tr>
+          <td><code>time_format([timestamp], [format])</code></td>
+          <td>Formate un timestamp en chaîne de caractères selon le modèle spécifié (par défaut <code>"%Y-%m-%d %H:%M:%S"</code>).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Exemple de Mesure de Performance</h2>
+    <pre><code>using &lt;time&gt;
+
+debut = time_now()
+
+# Simulation d'un traitement
+time_sleep(0.2)
+
+duree = time_now() - debut
+out("Traitement termine en :", duree, "secondes")
+
+date_actuelle = time_format()
+out("Date et heure courantes :", date_actuelle)</code></pre>
+
+    <div class="footer">
+      Documentation Nix Language &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

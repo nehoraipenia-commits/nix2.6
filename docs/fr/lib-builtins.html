@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fonctions Intégrées & Types | Documentation Nix</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="lib-builtins.html" class="active">🇫🇷 Français</a>
+      <a href="../en/lib-builtins.html">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Pour Commencer</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil & Présentation</a></li>
+        <li><a href="installation.html">Installation & Compilation</a></li>
+        <li><a href="syntax.html">Syntaxe du Langage</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Bibliothèques Standards</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Calculs & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Horloge & Délais</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Fichiers & Système</a></li>
+        <li><a href="lib-builtins.html" class="active">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Interface Graphique</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Widgets Modernes Qt6</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; Canvas 2D & Jeux</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">Compilateur AOT & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Fonctions Intégrées & Méthodes d'Objets</h1>
+    <p>Nix dispose de méthodes orientées objet sur les chaînes, listes et dictionnaires, ainsi que du module <code>&lt;builtins&gt;</code>.</p>
+
+    <h2>Méthodes sur les Chaînes (Strings)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Méthode</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>s.upper()</code> / <code>s.lower()</code></td>
+          <td>Convertit en majuscules ou minuscules.</td>
+        </tr>
+        <tr>
+          <td><code>s.strip()</code></td>
+          <td>Retire les espaces en début et fin de chaîne.</td>
+        </tr>
+        <tr>
+          <td><code>s.split([sep])</code></td>
+          <td>Découpe la chaîne en liste selon le séparateur.</td>
+        </tr>
+        <tr>
+          <td><code>s.replace(old, new)</code></td>
+          <td>Remplace les occurrences de sous-chaînes.</td>
+        </tr>
+        <tr>
+          <td><code>s.startswith(p)</code> / <code>s.endswith(p)</code></td>
+          <td>Vérifie le préfixe ou suffixe.</td>
+        </tr>
+        <tr>
+          <td><code>s.find(sub)</code></td>
+          <td>Retourne l'index de la sous-chaîne (-1 si introuvable).</td>
+        </tr>
+        <tr>
+          <td><code>s.isdigit()</code> / <code>s.isalpha()</code></td>
+          <td>Tests sur la nature des caractères.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Méthodes sur les Vecteurs (Listes)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Méthode</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>v.append(element)</code></td>
+          <td>Ajoute un élément à la fin du vecteur.</td>
+        </tr>
+        <tr>
+          <td><code>v.pop([index])</code></td>
+          <td>Retire et retourne l'élément à l'index (dernier par défaut).</td>
+        </tr>
+        <tr>
+          <td><code>v.insert(index, element)</code></td>
+          <td>Insère un élément à la position spécifiée.</td>
+        </tr>
+        <tr>
+          <td><code>v.reverse()</code></td>
+          <td>Inverse l'ordre des éléments en place.</td>
+        </tr>
+        <tr>
+          <td><code>v.sort([reverse])</code></td>
+          <td>Trie le vecteur par ordre croissant (ou décroissant si <code>true</code>).</td>
+        </tr>
+        <tr>
+          <td><code>v.clear()</code></td>
+          <td>Vide le vecteur.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Méthodes sur les Dictionnaires</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Méthode</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>d.keys()</code> / <code>d.values()</code></td>
+          <td>Retourne la liste des clés ou des valeurs.</td>
+        </tr>
+        <tr>
+          <td><code>d.get(cle, [defaut])</code></td>
+          <td>Accède à une valeur sans lever d'erreur si absente.</td>
+        </tr>
+        <tr>
+          <td><code>d.pop(cle)</code></td>
+          <td>Retire et retourne la valeur associée à la clé.</td>
+        </tr>
+        <tr>
+          <td><code>d.clear()</code></td>
+          <td>Supprime toutes les entrées.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Module &lt;builtins&gt;</h2>
+    <pre><code>using &lt;builtins&gt;
+
+out("Longueur :", len([1, 2, 3]))
+out("Maximum :", max(10, 42, 5))
+out("Somme :", sum([10, 20, 30]))
+out("Range :", range(0, 5))</code></pre>
+
+    <div class="footer">
+      Documentation Nix Language &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

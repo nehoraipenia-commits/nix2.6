@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Installation & Compilation | Nix Documentation</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="../fr/installation.html">🇫🇷 Français</a>
+      <a href="installation.html" class="active">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Getting Started</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home & Overview</a></li>
+        <li><a href="installation.html" class="active">Installation & Build</a></li>
+        <li><a href="syntax.html">Language Syntax</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Standard Libraries</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Mathematics & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Clock & Delays</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Files & OS</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">GUI Framework</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Modern Qt6 Widgets</a></li>
+        <li><a href="lib-window.html">&lt;window&gt; 2D Canvas & Games</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">AOT Compiler & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Installation & Building Nix</h1>
+    <p>Nix is built with C++17 and the Qt6 framework. It has no external Python dependencies.</p>
+
+    <h2>Prerequisites</h2>
+    <ul>
+      <li><strong>C++ Compiler</strong>: Apple Clang (macOS) or GCC (Linux) with <code>C++17</code> support.</li>
+      <li><strong>Qt6</strong>: QtWidgets, QtGui, QtCore frameworks (installable via <code>brew install qt</code> on macOS or <code>apt install qt6-base-dev</code> on Linux).</li>
+      <li><strong>Make</strong>: GNU Make for building.</li>
+    </ul>
+
+    <h2>Compiling the Nix Engine</h2>
+    <p>Run the Makefile in the project root directory:</p>
+    <pre><code>make</code></pre>
+
+    <p>This automatically produces:</p>
+    <ol>
+      <li>The Qt6 GUI library: <code>lib/libnix_qt.a</code> (static) and <code>lib/libnix_qt.dylib</code> (dynamic).</li>
+      <li>The primary <code>./nix</code> CLI binary compiled with <code>-O3</code> optimizations.</li>
+    </ol>
+
+    <h2>Cleaning Build Artifacts</h2>
+    <pre><code>make clean</code></pre>
+
+    <h2>Nix CLI Reference</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>./nix run script.nx [args...]</code></td>
+          <td>Runs the script using the high-performance C++ interpreter.</td>
+        </tr>
+        <tr>
+          <td><code>./nix build script.nx -o binary</code></td>
+          <td>Compiles the script to a standalone native executable.</td>
+        </tr>
+        <tr>
+          <td><code>./nix build script.nx -O3</code></td>
+          <td>Compiles with maximum machine optimization level (-O3).</td>
+        </tr>
+        <tr>
+          <td><code>./nix build script.nx --emit-cpp</code></td>
+          <td>Outputs and keeps the intermediate generated C++ source file.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      Nix Language Documentation &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>

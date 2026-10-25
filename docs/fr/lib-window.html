@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas 2D & Jeux &lt;window&gt; | Documentation Nix</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo-container">
+      <div class="logo-badge">NX</div>
+      <div class="logo-text">
+        <h2>NIX LANG</h2>
+        <span>v2.6 C++ Native</span>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <a href="lib-window.html" class="active">🇫🇷 Français</a>
+      <a href="../en/lib-window.html">🇬🇧 English</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Pour Commencer</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil & Présentation</a></li>
+        <li><a href="installation.html">Installation & Compilation</a></li>
+        <li><a href="syntax.html">Syntaxe du Langage</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Bibliothèques Standards</div>
+      <ul class="nav-links">
+        <li><a href="lib-math.html">&lt;math&gt; Calculs & Pi</a></li>
+        <li><a href="lib-time.html">&lt;time&gt; Horloge & Délais</a></li>
+        <li><a href="lib-sys.html">&lt;sys&gt; Fichiers & Système</a></li>
+        <li><a href="lib-builtins.html">&lt;builtins&gt; & Types</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Interface Graphique</div>
+      <ul class="nav-links">
+        <li><a href="lib-qt.html">&lt;qt&gt; Widgets Modernes Qt6</a></li>
+        <li><a href="lib-window.html" class="active">&lt;window&gt; Canvas 2D & Jeux</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-title">Performance</div>
+      <ul class="nav-links">
+        <li><a href="compiler.html">Compilateur AOT & Benchmark</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Module Canvas 2D &lt;window&gt;</h1>
+    <p>Le module <code>&lt;window&gt;</code> (également compatible sous l'alias <code>&lt;mac_window&gt;</code>) fournit un environnement de rendu graphique 2D temps réel propulsé par le double-buffering matériel de Qt6.</p>
+
+    <pre><code>using &lt;window&gt;</code></pre>
+
+    <h2>Fonctions de la Toile (Canvas)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Fonction</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>window_open(titre, w, h)</code></td>
+          <td>Ouvre une fenêtre Canvas de largeur <code>w</code> et hauteur <code>h</code>. Retourne l'identifiant de la fenêtre.</td>
+        </tr>
+        <tr>
+          <td><code>window_is_open(win)</code></td>
+          <td>Retourne <code>true</code> si la fenêtre est toujours active, <code>false</code> si l'utilisateur l'a fermée.</td>
+        </tr>
+        <tr>
+          <td><code>window_poll_events(win)</code></td>
+          <td>Dépile le prochain événement (clavier, souris) sous forme de dictionnaire <code>{"type", "key", "x", "y"}</code>.</td>
+        </tr>
+        <tr>
+          <td><code>window_clear(win, r, g, b)</code></td>
+          <td>Efface l'écran avec la couleur RVB spécifiée (0 à 255).</td>
+        </tr>
+        <tr>
+          <td><code>window_draw_rect(win, x, y, w, h, r, g, b, [rempli])</code></td>
+          <td>Dessine ou remplit un rectangle.</td>
+        </tr>
+        <tr>
+          <td><code>window_draw_circle(win, cx, cy, rayon, r, g, b, [rempli])</code></td>
+          <td>Dessine ou remplit un cercle avec antialiasing.</td>
+        </tr>
+        <tr>
+          <td><code>window_draw_line(win, x1, y1, x2, y2, r, g, b, [epaisseur])</code></td>
+          <td>Trace un segment de droite.</td>
+        </tr>
+        <tr>
+          <td><code>window_draw_text(win, texte, x, y, r, g, b, [taille])</code></td>
+          <td>Affiche du texte sur le canvas avec police nette.</td>
+        </tr>
+        <tr>
+          <td><code>window_present(win)</code></td>
+          <td>Met à jour l'affichage à l'écran (swap de buffer).</td>
+        </tr>
+        <tr>
+          <td><code>window_close(win)</code></td>
+          <td>Ferme manuellement la fenêtre.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Exemple de Dessin Fixe (Sans boucle while)</h2>
+    <pre><code>using &lt;window&gt;
+
+win = window_open("Mon Dessin Nix", 500, 400)
+
+window_clear(win, 25, 25, 35)
+window_draw_rect(win, 50, 50, 150, 100, 255, 100, 120, true)
+window_draw_circle(win, 350, 200, 50, 100, 200, 255, true)
+window_draw_text(win, "Toile 2D Nix C++", 160, 20, 255, 255, 255, 18)
+window_present(win)
+
+# La fenêtre reste automatiquement ouverte à l'écran !</code></pre>
+
+    <div class="footer">
+      Documentation Nix Language &copy; 2026.
+    </div>
+  </main>
+</body>
+</html>
